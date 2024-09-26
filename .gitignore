@@ -12,3 +12,4 @@ build
 /.vscode
 #ignoring  NetBeans project files
 /nbproject
+phpunit.xml
