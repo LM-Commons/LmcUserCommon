@@ -14,4 +14,15 @@
       <directory>./src</directory>
     </include>
   </source>
+  <php>
+    <const name="DB_DRIVER" value="sqlite"/>
+    <const name="DB_MYSQL_DSN" value="mysql:host=localhost;dbname=lmc_user"/>
+    <const name="DB_MYSQL_USERNAME" value="root"/>
+    <const name="DB_MYSQL_PASSWORD" value=""/>
+    <const name="DB_MYSQL_SCHEMA" value="./data/schema.mysql.sql"/>
+    <const name="DB_SQLITE_DSN" value="sqlite::memory:"/>
+    <const name="DB_SQLITE_USERNAME" value=""/>
+    <const name="DB_SQLITE_PASSWORD" value=""/>
+    <const name="DB_SQLITE_SCHEMA" value="./data/schema.sqlite.sql"/>
+  </php>
 </phpunit>
