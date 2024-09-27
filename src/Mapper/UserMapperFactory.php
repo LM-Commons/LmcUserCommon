@@ -11,7 +11,6 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Lmc\User\Core\Options\CoreOptions;
 use Psr\Container\ContainerInterface;
 
-use function assert;
 use function gettype;
 use function is_object;
 use function sprintf;
@@ -21,7 +20,7 @@ class UserMapperFactory implements FactoryInterface
     /**
      * @inheritDoc
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): UserInterface
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): User
     {
         /** @var CoreOptions $options */
         $options   = $container->get(CoreOptions::class);

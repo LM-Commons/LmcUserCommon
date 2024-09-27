@@ -10,7 +10,7 @@ use Lmc\User\Core\Entity\UserInterface as EntityUserInterface;
 
 use function assert;
 
-class User extends AbstractDbMapper implements UserInterface
+class User extends AbstractDbMapper implements UserMapperInterface
 {
     protected string $table = 'user';
 

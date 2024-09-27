@@ -9,6 +9,7 @@ use Laminas\Hydrator\ClassMethodsHydrator;
 use Lmc\User\Core\Mapper\UserHydrator;
 use Lmc\User\Core\Mapper\UserHydratorFactory;
 use Lmc\User\Core\Mapper\UserInterface;
+use Lmc\User\Core\Mapper\UserMapperInterface;
 use Lmc\User\Core\Mapper\UserMapperFactory;
 use Lmc\User\Core\Options\CoreOptions;
 use Lmc\User\Core\Options\CoreOptionsFactory;
@@ -27,21 +28,18 @@ class ConfigProvider
         return [
             'aliases'    => [
                 'lmcuser_laminas_db_adapter' => Adapter::class,
-                'lmcuser_user_mapper'        => UserInterface::class,
+                'lmcuser_user_mapper'        => UserMapperInterface::class,
                 'lmcuser_user_hydrator'      => UserHydrator::class,
                 'lmcuser_base_hydrator'      => 'lmcuser_default_hydrator',
+                UserInterface::class         => UserMapperInterface::class,
             ],
             'invokables' => [
                 'lmcuser_default_hydrator' => ClassMethodsHydrator::class,
             ],
             'factories'  => [
                 CoreOptions::class   => CoreOptionsFactory::class,
-                UserInterface::class => UserMapperFactory::class,
+                UserMapperInterface::class => UserMapperFactory::class,
                 UserHydrator::class  => UserHydratorFactory::class,
-            ],
-            'delegators'  => [
-                UserInterface::class => [
-                ],
             ],
         ];
     }
