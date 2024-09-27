@@ -1,15 +1,20 @@
 {
-  "name": "lm-commons/repository-template",
-  "description": "Repository template",
+  "name": "lm-commons/lmc-user-core",
+  "type": "library",
+  "description": "Core library for LmcUser components",
   "license": "MIT",
   "authors": [
     {
-      "name": "Firstname Lastname",
-      "email": "email@example.com"
+      "name": "Eric Richer",
+      "email": "eric.richer@vistoconsulting.com"
     }
   ],
   "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+    "laminas/laminas-db": "^2.0",
+    "laminas/laminas-eventmanager": "^3.0",
+    "doctrine/dbal": "^4.1",
+    "doctrine/doctrine-module": "^6.0"
   },
   "require-dev": {
     "laminas/laminas-coding-standard": "^2.5",
@@ -18,10 +23,14 @@
     "vimeo/psalm": "^5.25"
   },
   "autoload": {
-
+    "psr-4": {
+      "Lmc\\User\\Core\\" : "src/"
+    }
   },
   "autoload-dev": {
-
+    "psr-4": {
+      "LmcTest\\User\\Core\\": "test/"
+    }
   },
   "config": {
     "allow-plugins": {
