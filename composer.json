@@ -32,6 +32,10 @@
       "LmcTest\\User\\Core\\": "test/"
     }
   },
+  "extra": {
+    "component": "Lmc\\User\\Core",
+    "config-provider": "Lmc\\User\\Core\\ConfigProvider"
+  },
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
