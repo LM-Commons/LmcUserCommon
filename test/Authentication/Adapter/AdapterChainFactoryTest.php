@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication\Adapter;
+namespace LmcTest\User\Common\Authentication\Adapter;
 
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
-use Lmc\User\Core\Authentication\Adapter\AdapterChain;
-use Lmc\User\Core\Authentication\Adapter\AdapterChainFactory;
-use Lmc\User\Core\Options\CoreOptions;
+use Lmc\User\Common\Authentication\Adapter\AdapterChain;
+use Lmc\User\Common\Authentication\Adapter\AdapterChainFactory;
+use Lmc\User\Common\Options\CommonOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
@@ -27,9 +27,9 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testFactoryDefault(): void
     {
-        $coreOptions = new CoreOptions();
+        $coreOptions = new CommonOptions();
         $container   = $this->createMock(ContainerInterface::class);
-        $container->expects($this->once())->method('get')->with(CoreOptions::class)->willReturn($coreOptions);
+        $container->expects($this->once())->method('get')->with(CommonOptions::class)->willReturn($coreOptions);
         $container->expects($this->once())->method('has')->with('EventManager')->willReturn(false);
         $factory = new AdapterChainFactory();
         $this->assertInstanceOf(AdapterChain::class, $factory($container, ''));
@@ -41,13 +41,13 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testFactoryEventManager(): void
     {
-        $coreOptions  = new CoreOptions();
+        $coreOptions  = new CommonOptions();
         $eventManager = $this->createMock(EventManagerInterface::class);
         $container    = $this->createMock(ContainerInterface::class);
         $container->expects($this->once())->method('has')->with('EventManager')->willReturn(true);
         $container->expects($this->exactly(2))->method('get')
             ->willReturnMap([
-                [CoreOptions::class, $coreOptions],
+                [CommonOptions::class, $coreOptions],
                 ['EventManager', $eventManager],
             ]);
         $factory = new AdapterChainFactory();
@@ -62,7 +62,7 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testWithChainableAdapter(): void
     {
-        $coreOptions  = new CoreOptions([
+        $coreOptions  = new CommonOptions([
             'authAdapters' => [
                 1 => 'fooClass',
             ],
@@ -80,7 +80,7 @@ class AdapterChainFactoryTest extends TestCase
             ->willReturnMap([
                 ['EventManager', $eventManager],
                 ['fooClass', $fooClass],
-                [CoreOptions::class, $coreOptions],
+                [CommonOptions::class, $coreOptions],
             ]);
         $factory = new AdapterChainFactory();
         $adapter = $factory($container, '');
@@ -93,7 +93,7 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testChainableAdapterNotExists(): void
     {
-        $coreOptions = new CoreOptions([
+        $coreOptions = new CommonOptions([
             'authAdapters' => [
                 1 => stdClass::class,
             ],
@@ -105,7 +105,7 @@ class AdapterChainFactoryTest extends TestCase
                 [stdClass::class, false],
             ]);
         $container->expects($this->once())->method('get')
-            ->with(CoreOptions::class)
+            ->with(CommonOptions::class)
             ->willReturn($coreOptions);
         $factory = new AdapterChainFactory();
         $this->expectException(ServiceNotCreatedException::class);
@@ -119,7 +119,7 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testWithChainableAdapterNotListenerAggregate(): void
     {
-        $coreOptions  = new CoreOptions([
+        $coreOptions  = new CommonOptions([
             'authAdapters' => [
                 1 => 'fooClass',
             ],
@@ -135,7 +135,7 @@ class AdapterChainFactoryTest extends TestCase
             ->willReturnMap([
                 ['EventManager', $eventManager],
                 ['fooClass', new stdClass()],
-                [CoreOptions::class, $coreOptions],
+                [CommonOptions::class, $coreOptions],
             ]);
         $factory = new AdapterChainFactory();
         $this->expectException(ServiceNotCreatedException::class);
@@ -149,7 +149,7 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testInvalidAdapterConfiguration(): void
     {
-        $coreOptions = new CoreOptions([
+        $coreOptions = new CommonOptions([
             'auth_adapters' => [
                 100 => 'foo',
             ],
@@ -161,7 +161,7 @@ class AdapterChainFactoryTest extends TestCase
                 ['foo', false],
             ]);
         $container->expects($this->once())->method('get')
-            ->with(CoreOptions::class)
+            ->with(CommonOptions::class)
             ->willReturn($coreOptions);
         $factory = new AdapterChainFactory();
         $this->expectException(ServiceNotCreatedException::class);
@@ -175,7 +175,7 @@ class AdapterChainFactoryTest extends TestCase
      */
     public function testInvalidAdapter(): void
     {
-        $coreOptions = new CoreOptions([
+        $coreOptions = new CommonOptions([
             'auth_adapters' => [
                 100 => 'foo',
             ],
@@ -188,7 +188,7 @@ class AdapterChainFactoryTest extends TestCase
             ]);
         $container->expects($this->exactly(2))->method('get')
             ->willReturnMap([
-                [CoreOptions::class, $coreOptions],
+                [CommonOptions::class, $coreOptions],
                 ['foo', new stdClass()],
             ]);
         $factory = new AdapterChainFactory();

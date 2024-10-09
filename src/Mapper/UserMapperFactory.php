@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Mapper;
+namespace Lmc\User\Common\Mapper;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Hydrator\HydratorInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Lmc\User\Core\Options\CoreOptions;
+use Lmc\User\Common\Options\CommonOptions;
 use Psr\Container\ContainerInterface;
 
 use function gettype;
@@ -22,8 +22,8 @@ class UserMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): User
     {
-        /** @var CoreOptions $options */
-        $options   = $container->get(CoreOptions::class);
+        /** @var CommonOptions $options */
+        $options   = $container->get(CommonOptions::class);
         $dbAdapter = $container->get('lmcuser_laminas_db_adapter');
         if (! $dbAdapter instanceof Adapter) {
             throw new ServiceNotCreatedException(

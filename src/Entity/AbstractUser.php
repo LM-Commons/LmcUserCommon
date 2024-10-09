@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Entity;
+namespace Lmc\User\Common\Entity;
 
 abstract class AbstractUser implements UserInterface
 {

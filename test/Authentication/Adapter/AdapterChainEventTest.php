@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication\Adapter;
+namespace LmcTest\User\Common\Authentication\Adapter;
 
 use Laminas\Stdlib\RequestInterface;
-use Lmc\User\Core\Authentication\Adapter\AdapterChainEvent;
+use Lmc\User\Common\Authentication\Adapter\AdapterChainEvent;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\EventManager;
+namespace Lmc\User\Common\EventManager;
 
 use Laminas\EventManager\EventManagerAwareInterface;
 use Laminas\EventManager\EventManagerAwareTrait;

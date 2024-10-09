@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Options;
+namespace LmcTest\User\Common\Options;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
-use Lmc\User\Core\Options\CoreOptions;
-use Lmc\User\Core\Options\CoreOptionsFactory;
+use Lmc\User\Common\Options\CommonOptions;
+use Lmc\User\Common\Options\CommonOptionsFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\WithoutErrorHandler;
 use PHPUnit\Framework\TestCase;
@@ -18,8 +18,8 @@ use function set_error_handler;
 
 use const E_USER_DEPRECATED;
 
-#[CoversClass(CoreOptionsFactory::class)]
-class CoreOptionsFactoryTest extends TestCase
+#[CoversClass(CommonOptionsFactory::class)]
+class CommonOptionsFactoryTest extends TestCase
 {
     protected bool $userDeprecationNoticeTriggered = false;
 
@@ -32,8 +32,8 @@ class CoreOptionsFactoryTest extends TestCase
                 ],
             ],
         ]);
-        $factory        = new CoreOptionsFactory();
-        $this->assertInstanceOf(CoreOptions::class, $factory($serviceManager, ''));
+        $factory        = new CommonOptionsFactory();
+        $this->assertInstanceOf(CommonOptions::class, $factory($serviceManager, ''));
     }
 
     public function testFactoryNoConfig(): void
@@ -43,7 +43,7 @@ class CoreOptionsFactoryTest extends TestCase
                 'config' => [],
             ],
         ]);
-        $factory        = new CoreOptionsFactory();
+        $factory        = new CommonOptionsFactory();
         $this->expectException(ServiceNotCreatedException::class);
         $options = $factory($serviceManager, '');
     }
@@ -57,12 +57,12 @@ class CoreOptionsFactoryTest extends TestCase
                 ],
             ],
         ]);
-        $factory        = new CoreOptionsFactory();
+        $factory        = new CommonOptionsFactory();
         set_error_handler([$this, 'errorHandler']);
         $options = $factory($serviceManager, 'lmcuser');
         restore_error_handler();
         $this->assertTrue($this->userDeprecationNoticeTriggered);
-        $this->assertInstanceOf(CoreOptions::class, $options);
+        $this->assertInstanceOf(CommonOptions::class, $options);
     }
 
     public function errorHandler(int $errno, string $errstr, string $errfile, int $errline): bool

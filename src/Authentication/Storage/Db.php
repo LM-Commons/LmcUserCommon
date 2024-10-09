@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Authentication\Storage;
+namespace Lmc\User\Common\Authentication\Storage;
 
 use Laminas\Authentication\Exception\ExceptionInterface;
 use Laminas\Authentication\Storage\StorageInterface;
-use Lmc\User\Core\Entity\UserInterface;
-use Lmc\User\Core\Mapper\UserMapperInterface;
+use Lmc\User\Common\Entity\UserInterface;
+use Lmc\User\Common\Mapper\UserMapperInterface;
 
 use function is_int;
 use function is_scalar;

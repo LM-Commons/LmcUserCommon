@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Mapper;
+namespace LmcTest\User\Common\Mapper;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
-use Lmc\User\Core\ConfigProvider;
-use Lmc\User\Core\Mapper\UserHydrator;
-use Lmc\User\Core\Mapper\UserHydratorFactory;
+use Lmc\User\Common\ConfigProvider;
+use Lmc\User\Common\Mapper\UserHydrator;
+use Lmc\User\Common\Mapper\UserHydratorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;

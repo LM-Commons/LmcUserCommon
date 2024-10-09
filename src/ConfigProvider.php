@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core;
+namespace Lmc\User\Common;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Hydrator\ClassMethodsHydrator;
-use Lmc\User\Core\Mapper\UserHydrator;
-use Lmc\User\Core\Mapper\UserHydratorFactory;
-use Lmc\User\Core\Mapper\UserInterface;
-use Lmc\User\Core\Mapper\UserMapperInterface;
-use Lmc\User\Core\Mapper\UserMapperFactory;
-use Lmc\User\Core\Options\CoreOptions;
-use Lmc\User\Core\Options\CoreOptionsFactory;
+use Lmc\User\Common\Mapper\UserHydrator;
+use Lmc\User\Common\Mapper\UserHydratorFactory;
+use Lmc\User\Common\Mapper\UserInterface;
+use Lmc\User\Common\Mapper\UserMapperInterface;
+use Lmc\User\Common\Mapper\UserMapperFactory;
+use Lmc\User\Common\Options\CommonOptions;
+use Lmc\User\Common\Options\CommonOptionsFactory;
 
 class ConfigProvider
 {
@@ -39,7 +39,7 @@ class ConfigProvider
                 'lmcuser_default_hydrator' => ClassMethodsHydrator::class,
             ],
             'factories'  => [
-                CoreOptions::class   => CoreOptionsFactory::class,
+                CommonOptions::class   => CommonOptionsFactory::class,
                 UserMapperInterface::class => UserMapperFactory::class,
                 UserHydrator::class  => UserHydratorFactory::class,
             ],

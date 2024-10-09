@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Options;
+namespace LmcTest\User\Common\Options;
 
 use InvalidArgumentException;
-use Lmc\User\Core\Entity\User;
-use Lmc\User\Core\Options\CoreOptions;
-use LmcTest\User\Core\Assets\TestUserEntity;
+use Lmc\User\Common\Entity\User;
+use Lmc\User\Common\Options\CommonOptions;
+use LmcTest\User\Common\Assets\TestUserEntity;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-#[CoversClass(CoreOptions::class)]
-class CoreOptionsTest extends TestCase
+#[CoversClass(CommonOptions::class)]
+class CommonOptionsTest extends TestCase
 {
     public function testCoreOptionsDefault(): void
     {
-        $coreOptions = new CoreOptions();
+        $coreOptions = new CommonOptions();
         $this->assertEquals('user', $coreOptions->getTableName());
         $this->assertEquals(User::class, $coreOptions->getUserEntityClass());
         $this->assertIsArray($coreOptions->getAuthAdapters());
@@ -27,7 +27,7 @@ class CoreOptionsTest extends TestCase
 
     public function testCoreOptionsCustoms(): void
     {
-        $coreOptions = new CoreOptions([
+        $coreOptions = new CommonOptions([
             'tableName'       => 'foo',
             'userEntityClass' => TestUserEntity::class,
         ]);
@@ -38,7 +38,7 @@ class CoreOptionsTest extends TestCase
 
     public function testCoreOptionsSetGet(): void
     {
-        $coreOptions = new CoreOptions();
+        $coreOptions = new CommonOptions();
         $this->assertEquals('foo', $coreOptions->setTableName('foo')->getTableName());
         $this->assertEquals(
             TestUserEntity::class,
@@ -50,7 +50,7 @@ class CoreOptionsTest extends TestCase
     public function testNotExistUserEntityClass(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new CoreOptions([
+        new CommonOptions([
             'userEntityClass' => 'foo',
         ]);
     }
@@ -58,7 +58,7 @@ class CoreOptionsTest extends TestCase
     public function testInvalidUserEntityClass(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new CoreOptions([
+        new CommonOptions([
             'userEntityClass' => stdClass::class,
         ]);
     }
@@ -69,7 +69,7 @@ class CoreOptionsTest extends TestCase
         if ($expectException) {
             $this->expectException(InvalidArgumentException::class);
         }
-        $coreOptions  = new CoreOptions($config);
+        $coreOptions  = new CommonOptions($config);
         $authAdapters = $coreOptions->getAuthAdapters();
         if (! $expectException) {
             $results = [];
@@ -82,7 +82,7 @@ class CoreOptionsTest extends TestCase
 
     public function testFindAuthAdapterByName(): void
     {
-        $coreOptions = new CoreOptions([
+        $coreOptions = new CommonOptions([
             'auth_adapters' => [
                 100 => [
                     'name' => 'foo',

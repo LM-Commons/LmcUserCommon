@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Entity;
+namespace LmcTest\User\Common\Entity;
 
-use Lmc\User\Core\Entity\AbstractUser;
-use Lmc\User\Core\Entity\User;
+use Lmc\User\Common\Entity\AbstractUser;
+use Lmc\User\Common\Entity\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

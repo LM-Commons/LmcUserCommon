@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication\Adapter;
+namespace LmcTest\User\Common\Authentication\Adapter;
 
 use Laminas\Authentication\Adapter\Exception\ExceptionInterface;
 use Laminas\Authentication\Result;
@@ -14,11 +14,11 @@ use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Stdlib\RequestInterface;
 use Laminas\Stdlib\Response;
 use Laminas\Stdlib\ResponseInterface;
-use Lmc\User\Core\Authentication\Adapter\AdapterChain;
-use Lmc\User\Core\Authentication\Adapter\AdapterChainEvent;
-use Lmc\User\Core\Authentication\Adapter\ChainableAdapterInterface;
-use Lmc\User\Core\Authentication\Storage\Db;
-use Lmc\User\Core\Exception\AuthenticationEventException;
+use Lmc\User\Common\Authentication\Adapter\AdapterChain;
+use Lmc\User\Common\Authentication\Adapter\AdapterChainEvent;
+use Lmc\User\Common\Authentication\Adapter\ChainableAdapterInterface;
+use Lmc\User\Common\Authentication\Storage\Db;
+use Lmc\User\Common\Exception\AuthenticationEventException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;

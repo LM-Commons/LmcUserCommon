@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Options;
+namespace Lmc\User\Common\Options;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\FactoryInterface;
@@ -14,12 +14,12 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-class CoreOptionsFactory implements FactoryInterface
+class CommonOptionsFactory implements FactoryInterface
 {
     /**
      * @inheritDoc
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): CoreOptions
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): CommonOptions
     {
         $config = $container->get('config');
         assert(is_array($config));
@@ -35,6 +35,6 @@ class CoreOptionsFactory implements FactoryInterface
         } else {
             throw new ServiceNotCreatedException("Cannot find a configuration for 'lmc_user'");
         }
-        return new CoreOptions($config);
+        return new CommonOptions($config);
     }
 }

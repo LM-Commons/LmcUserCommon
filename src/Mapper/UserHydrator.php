@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Mapper;
+namespace Lmc\User\Common\Mapper;
 
 use Laminas\Hydrator\HydratorInterface;
-use Lmc\User\Core\Entity\UserInterface as UserEntityInterface;
+use Lmc\User\Common\Entity\UserInterface as UserEntityInterface;
 
 use function assert;
 

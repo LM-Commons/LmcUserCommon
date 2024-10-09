@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Lmc\User\Core\Db\Adapter;
+namespace Lmc\User\Common\Db\Adapter;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\DriverInterface;

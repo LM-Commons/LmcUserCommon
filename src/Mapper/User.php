@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Mapper;
+namespace Lmc\User\Common\Mapper;
 
 use Closure;
 use Laminas\Db\Adapter\Driver\ResultInterface;
-use Lmc\User\Core\Entity\UserInterface as EntityUserInterface;
+use Lmc\User\Common\Entity\UserInterface as EntityUserInterface;
 
 use function assert;
 

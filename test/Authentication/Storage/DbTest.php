@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication\Storage;
+namespace LmcTest\User\Common\Authentication\Storage;
 
 use Laminas\Authentication\Exception\ExceptionInterface;
 use Laminas\Authentication\Storage\Session;
 use Laminas\Authentication\Storage\StorageInterface;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Hydrator\HydratorInterface;
-use Lmc\User\Core\Authentication\Storage\Db;
-use Lmc\User\Core\Entity\User;
-use Lmc\User\Core\Entity\UserInterface;
-use Lmc\User\Core\Mapper\User as UserMapper;
-use Lmc\User\Core\Mapper\UserMapperInterface;
+use Lmc\User\Common\Authentication\Storage\Db;
+use Lmc\User\Common\Entity\User;
+use Lmc\User\Common\Entity\UserInterface;
+use Lmc\User\Common\Mapper\User as UserMapper;
+use Lmc\User\Common\Mapper\UserMapperInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

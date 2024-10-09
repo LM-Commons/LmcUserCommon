@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Authentication;
+namespace Lmc\User\Common\Authentication;
 
 use Laminas\Authentication\AuthenticationService;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Lmc\User\Core\Authentication\Adapter\AdapterChain;
-use Lmc\User\Core\Authentication\Storage\Db;
+use Lmc\User\Common\Authentication\Adapter\AdapterChain;
+use Lmc\User\Common\Authentication\Storage\Db;
 use Psr\Container\ContainerInterface;
 
 class AuthenticationServiceFactory implements FactoryInterface

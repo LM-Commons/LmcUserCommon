@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication;
+namespace LmcTest\User\Common\Authentication;
 
 use Laminas\Authentication\AuthenticationService;
-use Lmc\User\Core\Authentication\Adapter\AdapterChain;
-use Lmc\User\Core\Authentication\AuthenticationServiceFactory;
-use Lmc\User\Core\Authentication\Storage\Db;
+use Lmc\User\Common\Authentication\Adapter\AdapterChain;
+use Lmc\User\Common\Authentication\AuthenticationServiceFactory;
+use Lmc\User\Common\Authentication\Storage\Db;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

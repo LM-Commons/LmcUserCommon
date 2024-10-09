@@ -6,7 +6,7 @@
          cacheDirectory=".phpunit.cache"
          displayDetailsOnTestsThatTriggerWarnings="true"
 >
-  <testsuite name="PLmcUser Core component tests">
+  <testsuite name="PLmcUser Common component tests">
     <directory>./test</directory>
   </testsuite>
   <source>

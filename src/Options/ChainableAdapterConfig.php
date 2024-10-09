@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Options;
+namespace Lmc\User\Common\Options;
 
 use Laminas\Stdlib\AbstractOptions;
 

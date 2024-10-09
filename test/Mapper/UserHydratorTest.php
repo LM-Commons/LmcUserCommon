@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Mapper;
+namespace LmcTest\User\Common\Mapper;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
-use Lmc\User\Core\Entity\User as EntityUser;
-use Lmc\User\Core\Mapper\UserHydrator;
+use Lmc\User\Common\Entity\User as EntityUser;
+use Lmc\User\Common\Mapper\UserHydrator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

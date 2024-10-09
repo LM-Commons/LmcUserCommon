@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Mapper;
+namespace LmcTest\User\Common\Mapper;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
-use Lmc\User\Core\ConfigProvider;
-use Lmc\User\Core\Mapper\User;
-use Lmc\User\Core\Mapper\UserMapperFactory;
+use Lmc\User\Common\ConfigProvider;
+use Lmc\User\Common\Mapper\User;
+use Lmc\User\Common\Mapper\UserMapperFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;

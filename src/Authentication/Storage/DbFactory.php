@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Authentication\Storage;
+namespace Lmc\User\Common\Authentication\Storage;
 
 use Laminas\Authentication\Storage\Session;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Lmc\User\Core\Mapper\UserMapperInterface;
+use Lmc\User\Common\Mapper\UserMapperInterface;
 use Psr\Container\ContainerInterface;
 
 class DbFactory implements FactoryInterface

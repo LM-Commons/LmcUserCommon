@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Authentication\Storage;
+namespace LmcTest\User\Common\Authentication\Storage;
 
-use Lmc\User\Core\Authentication\Storage\Db;
-use Lmc\User\Core\Authentication\Storage\DbFactory;
-use Lmc\User\Core\Mapper\UserMapperInterface;
+use Lmc\User\Common\Authentication\Storage\Db;
+use Lmc\User\Common\Authentication\Storage\DbFactory;
+use Lmc\User\Common\Mapper\UserMapperInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

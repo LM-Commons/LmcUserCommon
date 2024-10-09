@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Assets;
+namespace LmcTest\User\Common\Assets;
 
-use Lmc\User\Core\Entity\User;
+use Lmc\User\Common\Entity\User;
 
 class TestUserEntity extends User
 {

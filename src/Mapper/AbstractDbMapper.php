@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Mapper;
+namespace Lmc\User\Common\Mapper;
 
 use Closure;
 use Laminas\Db\Adapter\Adapter;
@@ -14,8 +14,8 @@ use Laminas\EventManager\EventManagerAwareInterface;
 use Laminas\EventManager\EventManagerAwareTrait;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorInterface;
-use Lmc\User\Core\Db\Adapter\MasterSlaveAdapterInterface;
-use Lmc\User\Core\Entity\UserInterface as UserEntityInterface;
+use Lmc\User\Common\Db\Adapter\MasterSlaveAdapterInterface;
+use Lmc\User\Common\Entity\UserInterface as UserEntityInterface;
 
 abstract class AbstractDbMapper implements EventManagerAwareInterface
 {

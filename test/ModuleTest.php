@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core;
+namespace LmcTest\User\Common;
 
-use Lmc\User\Core\Module;
+use Lmc\User\Common\Module;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

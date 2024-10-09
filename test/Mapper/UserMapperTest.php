@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Mapper;
+namespace LmcTest\User\Common\Mapper;
 
 use Exception as BaseException;
 use Laminas\Db\Adapter\Adapter;
@@ -10,12 +10,12 @@ use Laminas\Db\Adapter\Driver\DriverInterface;
 use Laminas\EventManager\Event;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\ServiceManager\ServiceManager;
-use Lmc\User\Core\Db\Adapter\MasterSlaveAdapter;
-use Lmc\User\Core\Entity\User as Entity;
-use Lmc\User\Core\Entity\UserInterface;
-use Lmc\User\Core\Mapper\AbstractDbMapper;
-use Lmc\User\Core\Mapper\User;
-use Lmc\User\Core\Mapper\UserHydrator;
+use Lmc\User\Common\Db\Adapter\MasterSlaveAdapter;
+use Lmc\User\Common\Entity\User as Entity;
+use Lmc\User\Common\Entity\UserInterface;
+use Lmc\User\Common\Mapper\AbstractDbMapper;
+use Lmc\User\Common\Mapper\User;
+use Lmc\User\Common\Mapper\UserHydrator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;

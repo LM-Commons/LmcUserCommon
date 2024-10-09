@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Db\Adapter;
+namespace LmcTest\User\Common\Db\Adapter;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\DriverInterface;
 use Laminas\Db\Adapter\Platform\PlatformInterface;
 use Laminas\Db\ResultSet\ResultSetInterface;
-use Lmc\User\Core\Db\Adapter\MasterSlaveAdapter;
+use Lmc\User\Common\Db\Adapter\MasterSlaveAdapter;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

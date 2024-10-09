@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LmcTest\User\Core\Options;
+namespace LmcTest\User\Common\Options;
 
-use Lmc\User\Core\Options\ChainableAdapterConfig;
+use Lmc\User\Common\Options\ChainableAdapterConfig;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

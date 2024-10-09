@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Mapper;
+namespace Lmc\User\Common\Mapper;
 
 use Laminas\Hydrator\HydratorInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;

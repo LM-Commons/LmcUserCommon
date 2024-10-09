@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Lmc\User\Core\Options;
+namespace Lmc\User\Common\Options;
 
 use InvalidArgumentException;
 use Laminas\Stdlib\AbstractOptions;
-use Lmc\User\Core\Entity\User;
-use Lmc\User\Core\Entity\UserInterface;
+use Lmc\User\Common\Entity\User;
+use Lmc\User\Common\Entity\UserInterface;
 use Webmozart\Assert\Assert;
 
 use function array_is_list;
@@ -16,7 +16,7 @@ use function is_array;
 /**
  * @template TValue
  */
-class CoreOptions extends AbstractOptions
+class CommonOptions extends AbstractOptions
 {
     // phpcs:disable PSR2.Classes.PropertyDeclaration.Underscore,WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCapsProperty
     /**
@@ -37,7 +37,7 @@ class CoreOptions extends AbstractOptions
      /**
       * set user entity class name
       */
-    public function setUserEntityClass(string $userEntityClass): CoreOptions
+    public function setUserEntityClass(string $userEntityClass): CommonOptions
     {
         Assert::classExists($userEntityClass);
         Assert::implementsInterface($userEntityClass, UserInterface::class);
@@ -56,7 +56,7 @@ class CoreOptions extends AbstractOptions
     /**
      * set user table name
      */
-    public function setTableName(string $tableName): CoreOptions
+    public function setTableName(string $tableName): CommonOptions
     {
         $this->tableName = $tableName;
         return $this;
@@ -70,7 +70,7 @@ class CoreOptions extends AbstractOptions
         return $this->tableName;
     }
 
-    public function setAuthAdapters(array $authAdaptersConfig): CoreOptions
+    public function setAuthAdapters(array $authAdaptersConfig): CommonOptions
     {
         if (array_is_list($authAdaptersConfig)) {
             throw new InvalidArgumentException('Authentication adapter configuration cannot be a list array');
