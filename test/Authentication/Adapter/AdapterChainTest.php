@@ -138,8 +138,10 @@ class AdapterChainTest extends TestCase
 
     /**
      * Get through the first part of SetUpPrepareForAuthentication
+     *
+     * @throws Exception
      */
-    protected function setUpPrepareForAuthentication()
+    protected function setUpPrepareForAuthentication(): ResponseCollection
     {
         $this->request = $this->createMock(RequestInterface::class);
         $this->event   = $this->createMock(AdapterChainEvent::class);
@@ -149,9 +151,7 @@ class AdapterChainTest extends TestCase
         $this->event->setName(AdapterChainEvent::AUTHENTICATE_PRE);
         $this->eventManager->expects($this->atLeastOnce())->method('triggerEvent')->with($this->event);
 
-        /**
-         * @var $response ResponseCollection
-         */
+        /** @var $responses ResponseCollection */
         $responses = $this->createMock(ResponseCollection::class);
 
         $this->event->setName(AdapterChainEvent::AUTHENTICATE);
@@ -180,7 +180,7 @@ class AdapterChainTest extends TestCase
     /**
      * Provider for testPrepareForAuthentication()
      */
-    static public function identityProvider(): array
+    public static function identityProvider(): array
     {
         return [
             [true, true],

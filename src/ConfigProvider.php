@@ -9,8 +9,8 @@ use Laminas\Hydrator\ClassMethodsHydrator;
 use Lmc\User\Common\Mapper\UserHydrator;
 use Lmc\User\Common\Mapper\UserHydratorFactory;
 use Lmc\User\Common\Mapper\UserInterface;
-use Lmc\User\Common\Mapper\UserMapperInterface;
 use Lmc\User\Common\Mapper\UserMapperFactory;
+use Lmc\User\Common\Mapper\UserMapperInterface;
 use Lmc\User\Common\Options\CommonOptions;
 use Lmc\User\Common\Options\CommonOptionsFactory;
 
@@ -39,9 +39,9 @@ class ConfigProvider
                 'lmcuser_default_hydrator' => ClassMethodsHydrator::class,
             ],
             'factories'  => [
-                CommonOptions::class   => CommonOptionsFactory::class,
+                CommonOptions::class       => CommonOptionsFactory::class,
                 UserMapperInterface::class => UserMapperFactory::class,
-                UserHydrator::class  => UserHydratorFactory::class,
+                UserHydrator::class        => UserHydratorFactory::class,
             ],
         ];
     }

@@ -11,6 +11,7 @@ use Lmc\User\Common\ConfigProvider;
 use Lmc\User\Common\Mapper\User;
 use Lmc\User\Common\Mapper\UserMapperFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use stdClass;
@@ -49,9 +50,8 @@ class UserMapperFactoryTest extends TestCase
         $factory($container, '');
     }
 
-
     /**
-     * @throws ContainerExceptionInterface
+     * @throws ContainerExceptionInterface|Exception
      */
     public function testInvalidHydrator(): void
     {

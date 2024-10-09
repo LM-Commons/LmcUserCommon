@@ -18,12 +18,13 @@ class Db implements StorageInterface
 
     protected UserMapperInterface $userMapper;
 
-    protected mixed $resolvedIdentity = null;
+    protected mixed $resolvedIdentity;
 
     public function __construct(UserMapperInterface $userMapper, StorageInterface $storage)
     {
-        $this->userMapper = $userMapper;
-        $this->storage    = $storage;
+        $this->userMapper       = $userMapper;
+        $this->storage          = $storage;
+        $this->resolvedIdentity = null;
     }
 
     /**

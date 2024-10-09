@@ -11,7 +11,6 @@ use Lmc\User\Common\Authentication\Adapter\AdapterChain;
 use Lmc\User\Common\Authentication\Adapter\AdapterChainFactory;
 use Lmc\User\Common\Options\CommonOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -195,18 +194,5 @@ class AdapterChainFactoryTest extends TestCase
         $this->expectException(ServiceNotCreatedException::class);
         $this->expectExceptionMessage("Adapter 'stdClass' is not an instance of 'ListenerAggregateInterface'");
         $factory($container, '');
-    }
-    public static function invalidAdapterConfigurationProvider(): array
-    {
-        return [
-            'invalid name'   => [
-                100,
-                'bar',
-            ],
-            'invalid type' => [
-                1,
-                1,
-            ],
-        ];
     }
 }

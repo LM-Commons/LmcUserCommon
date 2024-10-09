@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Lmc\User\Common\Authentication\Adapter;
 
-use Laminas\EventManager\AbstractListenerAggregate;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\FactoryInterface;

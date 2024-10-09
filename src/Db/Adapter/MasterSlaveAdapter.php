@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Lmc\User\Common\Db\Adapter;
 
@@ -19,8 +19,8 @@ class MasterSlaveAdapter extends Adapter implements MasterSlaveAdapterInterface
     public function __construct(
         Adapter $slaveAdapter,
         DriverInterface $driver,
-        PlatformInterface $platform = null,
-        ResultSetInterface $queryResultPrototype = null
+        ?PlatformInterface $platform = null,
+        ?ResultSetInterface $queryResultPrototype = null
     ) {
         $this->slaveAdapter = $slaveAdapter;
         parent::__construct($driver, $platform, $queryResultPrototype);

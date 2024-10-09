@@ -200,7 +200,7 @@ class CommonOptionsTest extends TestCase
                 [],
                 true,
             ],
-            'invalid-priority'               => [
+            'invalid-priority'          => [
                 [
                     'authAdapters' => [
                         'foo' => [

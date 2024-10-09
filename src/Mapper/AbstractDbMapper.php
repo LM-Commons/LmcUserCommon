@@ -12,7 +12,6 @@ use Laminas\Db\Sql\Select;
 use Laminas\Db\Sql\Sql;
 use Laminas\EventManager\EventManagerAwareInterface;
 use Laminas\EventManager\EventManagerAwareTrait;
-use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorInterface;
 use Lmc\User\Common\Db\Adapter\MasterSlaveAdapterInterface;
 use Lmc\User\Common\Entity\UserInterface as UserEntityInterface;

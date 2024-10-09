@@ -9,9 +9,7 @@ use Laminas\ServiceManager\ServiceManager;
 use Lmc\User\Common\Options\CommonOptions;
 use Lmc\User\Common\Options\CommonOptionsFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\WithoutErrorHandler;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerExceptionInterface;
 
 use function restore_error_handler;
 use function set_error_handler;

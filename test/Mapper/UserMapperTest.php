@@ -120,7 +120,6 @@ final class UserMapperTest extends TestCase
         $this->assertEquals($hydrator, $mapper->getHydrator());
     }
 
-
     public function testGetSetTableName(): void
     {
         $this->assertEquals('foo', $this->mapper->setTableName('foo')->getTableName());
