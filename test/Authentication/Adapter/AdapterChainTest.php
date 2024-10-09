@@ -151,7 +151,7 @@ class AdapterChainTest extends TestCase
         $this->event->setName(AdapterChainEvent::AUTHENTICATE_PRE);
         $this->eventManager->expects($this->atLeastOnce())->method('triggerEvent')->with($this->event);
 
-        /** @var $responses ResponseCollection */
+        /** @var ResponseCollection $responses */
         $responses = $this->createMock(ResponseCollection::class);
 
         $this->event->setName(AdapterChainEvent::AUTHENTICATE);
