@@ -6,6 +6,8 @@ namespace Lmc\User\Core;
 
 class Module
 {
+    public const LMC_USER_SESSION_STORAGE_NAMESPACE = ConfigProvider::LMC_USER_SESSION_STORAGE_NAMESPACE;
+
     public function getConfig(): array
     {
         $configProvider = new ConfigProvider();

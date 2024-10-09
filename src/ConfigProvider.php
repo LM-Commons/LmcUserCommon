@@ -16,6 +16,8 @@ use Lmc\User\Core\Options\CoreOptionsFactory;
 
 class ConfigProvider
 {
+    public const LMC_USER_SESSION_STORAGE_NAMESPACE = 'LmcUserNamespace';
+
     public function __invoke(): array
     {
         return [

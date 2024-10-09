@@ -1,7 +1,7 @@
 {
-  "name": "lm-commons/lmc-user-core",
+  "name": "lm-commons/lmc-user-common",
   "type": "library",
-  "description": "Core library for LmcUser components",
+  "description": "Common libraries for LmcUser components",
   "license": "MIT",
   "authors": [
     {
@@ -13,6 +13,7 @@
     "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
     "laminas/laminas-db": "^2.0",
     "laminas/laminas-eventmanager": "^3.0",
+    "laminas/laminas-session": "^2.0",
     "doctrine/dbal": "^4.1",
     "doctrine/doctrine-module": "^6.0"
   },
@@ -24,17 +25,17 @@
   },
   "autoload": {
     "psr-4": {
-      "Lmc\\User\\Core\\" : "src/"
+      "Lmc\\User\\Common\\" : "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LmcTest\\User\\Core\\": "test/"
+      "LmcTest\\User\\Common\\": "test/"
     }
   },
   "extra": {
-    "component": "Lmc\\User\\Core",
-    "config-provider": "Lmc\\User\\Core\\ConfigProvider"
+    "component": "Lmc\\User\\Common",
+    "config-provider": "Lmc\\User\\Common\\ConfigProvider"
   },
   "config": {
     "allow-plugins": {
