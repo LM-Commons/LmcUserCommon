@@ -8,3 +8,4 @@
 /psalm.baseline.xml export-ignore
 /test/ export-ignore
 /autoload-dev/ export-ignore
+/docker-compose-mysql.yml export-ignore
