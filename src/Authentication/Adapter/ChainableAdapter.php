@@ -7,7 +7,7 @@ namespace Lmc\User\Common\Authentication\Adapter;
 /**
  * @deprecated Use ChainableAdapterInterface instead
  */
-// phpcs:disable
+// phpcs:disable WebimpressCodingStandard.NamingConventions.Interface.Suffix
 interface ChainableAdapter extends ChainableAdapterInterface
 {
 }
