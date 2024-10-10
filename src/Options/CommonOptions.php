@@ -33,6 +33,7 @@ class CommonOptions extends AbstractOptions
 
     protected string $tableName = 'user';
 
+    /** @var array<ChainableAdapterConfig> */
     protected array $authAdapters = [];
 
      /**
@@ -100,6 +101,9 @@ class CommonOptions extends AbstractOptions
         return $this;
     }
 
+    /**
+     * @return array<ChainableAdapterConfig>
+     */
     public function getAuthAdapters(): array
     {
         return $this->authAdapters;

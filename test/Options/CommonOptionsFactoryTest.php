@@ -10,6 +10,7 @@ use Lmc\User\Common\Options\CommonOptions;
 use Lmc\User\Common\Options\CommonOptionsFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
 
 use function restore_error_handler;
 use function set_error_handler;
@@ -21,6 +22,9 @@ class CommonOptionsFactoryTest extends TestCase
 {
     protected bool $userDeprecationNoticeTriggered = false;
 
+    /**
+     * @throws ContainerExceptionInterface
+     */
     public function testFactory(): void
     {
         $serviceManager = new ServiceManager([
@@ -34,6 +38,9 @@ class CommonOptionsFactoryTest extends TestCase
         $this->assertInstanceOf(CommonOptions::class, $factory($serviceManager, ''));
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     */
     public function testFactoryNoConfig(): void
     {
         $serviceManager = new ServiceManager([
@@ -43,9 +50,12 @@ class CommonOptionsFactoryTest extends TestCase
         ]);
         $factory        = new CommonOptionsFactory();
         $this->expectException(ServiceNotCreatedException::class);
-        $options = $factory($serviceManager, '');
+        $factory($serviceManager, '');
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     */
     public function testFactoryLmcUserConfig(): void
     {
         $serviceManager = new ServiceManager([
@@ -63,7 +73,7 @@ class CommonOptionsFactoryTest extends TestCase
         $this->assertInstanceOf(CommonOptions::class, $options);
     }
 
-    public function errorHandler(int $errno, string $errstr, string $errfile, int $errline): bool
+    public function errorHandler(int $errno): bool
     {
         if ($errno === E_USER_DEPRECATED) {
             $this->userDeprecationNoticeTriggered = true;
