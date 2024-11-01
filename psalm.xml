@@ -20,4 +20,7 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+    <stubs>
+        <file name="./.psalm-stubs/psr-container.php.stub" preloadClasses="true" />
+    </stubs>
 </psalm>
