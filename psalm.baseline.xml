@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
-  <file src="src/Authentication/Adapter/AdapterChain.php">
-    <MixedArgument>
-      <code><![CDATA[$result->last()]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$listener]]></code>
-    </MixedAssignment>
-    <MixedInferredReturnType>
-      <code><![CDATA[ResponseInterface|bool]]></code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$result->last()]]></code>
-    </MixedReturnStatement>
-    <PossiblyNullArgument>
-      <code><![CDATA[$event->getCode()]]></code>
-    </PossiblyNullArgument>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$result]]></code>
-    </RedundantConditionGivenDocblockType>
-  </file>
   <file src="src/Authentication/Adapter/AdapterChainEvent.php">
-    <MissingTemplateParam>
-      <code><![CDATA[AdapterChainEvent]]></code>
-    </MissingTemplateParam>
     <MixedInferredReturnType>
       <code><![CDATA[RequestInterface|null]]></code>
       <code><![CDATA[int|null]]></code>
@@ -34,35 +11,19 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Authentication/Adapter/AdapterChainFactory.php">
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[assert($adapterConfig instanceof ChainableAdapterConfig)]]></code>
-    </RedundantConditionGivenDocblockType>
-  </file>
-  <file src="src/Authentication/Adapter/ChainableAdapter.php">
-    <UnusedClass>
-      <code><![CDATA[ChainableAdapter]]></code>
-    </UnusedClass>
+    <MixedArgument>
+      <code><![CDATA[$container->get('EventManager')]]></code>
+    </MixedArgument>
   </file>
   <file src="src/Authentication/Adapter/ChainableAdapterInterface.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[authenticate]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Authentication/AuthenticationServiceFactory.php">
-    <MixedArgument>
-      <code><![CDATA[$container->get(AdapterChain::class)]]></code>
-      <code><![CDATA[$container->get(Db::class)]]></code>
-    </MixedArgument>
-  </file>
   <file src="src/Authentication/Storage/Db.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$identity]]></code>
     </ArgumentTypeCoercion>
-  </file>
-  <file src="src/Authentication/Storage/DbFactory.php">
-    <MixedArgument>
-      <code><![CDATA[$container->get(UserMapperInterface::class)]]></code>
-    </MixedArgument>
   </file>
   <file src="src/Db/Adapter/MasterSlaveAdapter.php">
     <PropertyNotSetInConstructor>
@@ -130,15 +91,7 @@
       <code><![CDATA[ResultInterface]]></code>
     </PossiblyUnusedReturnValue>
   </file>
-  <file src="src/Options/ChainableAdapterConfig.php">
-    <MissingTemplateParam>
-      <code><![CDATA[ChainableAdapterConfig]]></code>
-    </MissingTemplateParam>
-  </file>
   <file src="src/Options/CommonOptions.php">
-    <MissingTemplateParam>
-      <code><![CDATA[CommonOptions]]></code>
-    </MissingTemplateParam>
     <MixedAssignment>
       <code><![CDATA[$authAdapterConfig['name']]]></code>
       <code><![CDATA[$authAdapterConfig['options']]]></code>
