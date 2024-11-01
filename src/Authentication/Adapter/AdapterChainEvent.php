@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Lmc\User\Common\Authentication\Adapter;
 
+use ArrayAccess;
 use Laminas\EventManager\Event;
 use Laminas\Stdlib\RequestInterface;
 
 use function assert;
 use function is_array;
 
+/**
+ * @extends Event<object|string|null, array|ArrayAccess|object|array<array-key, int|null>>
+ */
 class AdapterChainEvent extends Event
 {
     public const AUTHENTICATE_PRE     = 'authenticate.pre';

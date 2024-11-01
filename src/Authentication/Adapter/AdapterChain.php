@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lmc\User\Common\Authentication\Adapter;
 
 use Laminas\Authentication\Adapter\AdapterInterface;
+use Laminas\Authentication\Exception\ExceptionInterface;
 use Laminas\Authentication\Result;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\EventManagerAwareTrait;
@@ -13,7 +14,6 @@ use Laminas\Stdlib\RequestInterface;
 use Laminas\Stdlib\ResponseInterface;
 use Lmc\User\Common\Exception\AuthenticationEventException;
 
-use function get_class;
 use function gettype;
 use function is_array;
 use function is_object;
@@ -24,14 +24,16 @@ class AdapterChain implements AdapterInterface
     use EventManagerAwareTrait;
 
     protected ?AdapterChainEvent $event = null;
+
     /**
      * @inheritDoc
+     * @throws ExceptionInterface
      */
     public function authenticate(): Result
     {
         $event  = $this->getEvent();
         $result = new Result(
-            $event->getCode(),
+            $event->getCode() ?? Result::FAILURE_UNCATEGORIZED,
             $event->getIdentity(),
             $event->getMessages()
         );
@@ -55,17 +57,17 @@ class AdapterChain implements AdapterInterface
             $event
         );
 
-        if ($result && $result->stopped()) {
-            if ($result->last() instanceof ResponseInterface) {
-                return $result->last();
+        if ($result->stopped()) {
+            $lastResult = $result->last();
+            if (! $lastResult instanceof ResponseInterface) {
+                throw new AuthenticationEventException(
+                    sprintf(
+                        'Auth event was stopped without a response. Got "%s" instead',
+                        is_object($result->last()) ? $lastResult::class : gettype($lastResult)
+                    )
+                );
             }
-
-            throw new AuthenticationEventException(
-                sprintf(
-                    'Auth event was stopped without a response. Got "%s" instead',
-                    is_object($result->last()) ? get_class($result->last()) : gettype($result->last())
-                )
-            );
+            return $lastResult;
         }
 
         if ($event->getIdentity()) {
@@ -80,13 +82,17 @@ class AdapterChain implements AdapterInterface
         return false;
     }
 
+    /**
+     * @throws ExceptionInterface
+     */
     public function resetAdapters(): AdapterChain
     {
         $sharedManager = $this->getEventManager()->getSharedManager();
 
         if ($sharedManager instanceof SharedEventManagerInterface) {
-            $listeners = $sharedManager->getListeners(['authenticate'], 'authenticate');
+            $listeners = $sharedManager->getListeners(['authenticate'], AdapterChainEvent::AUTHENTICATE);
 
+            /** @var mixed|array $listener */
             foreach ($listeners as $listener) {
                 if (is_array($listener) && $listener[0] instanceof ChainableAdapterInterface) {
                     $listener[0]->getStorage()->clear();
@@ -112,6 +118,7 @@ class AdapterChain implements AdapterInterface
     {
         if (null === $this->event) {
             $this->setEvent(new AdapterChainEvent());
+            /** @psalm-suppress PossiblyNullReference */
             $this->event->setTarget($this);
         }
         return $this->event;

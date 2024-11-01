@@ -192,8 +192,8 @@ class AdapterChainTest extends TestCase
      * Tests prepareForAuthentication when falls through events.
      *
      * @param mixed $identity
-     * @param bool  $expected
-     * @dataProvider identityProvider
+     * @param bool $expected
+     * @throws Exception
      */
     #[DataProvider('identityProvider')]
     public function testPrepareForAuthentication($identity, $expected): void
@@ -233,7 +233,7 @@ class AdapterChainTest extends TestCase
     /**
      * Test prepareForAuthentication() when the returned collection contains stopped.
      */
-    public function testPrepareForAuthenticationWithBadEventResult()
+    public function testPrepareForAuthenticationWithBadEventResult(): void
     {
         $this->expectException(AuthenticationEventException::class);
         $result = $this->setUpPrepareForAuthentication();
@@ -249,7 +249,7 @@ class AdapterChainTest extends TestCase
     /**
      * Test getEvent() when no event has previously been set.
      */
-    public function testGetEventWithNoEventSet()
+    public function testGetEventWithNoEventSet(): void
     {
         $event = $this->adapterChain->getEvent();
 
@@ -268,7 +268,7 @@ class AdapterChainTest extends TestCase
     /**
      * Test getEvent() when an event has previously been set.
      */
-    public function testGetEventWithEventSet()
+    public function testGetEventWithEventSet(): void
     {
         $event = new AdapterChainEvent();
 
@@ -284,7 +284,7 @@ class AdapterChainTest extends TestCase
     /**
      * Tests the mechanism for casting one event type to AdapterChainEvent
      */
-    public function testSetEventWithDifferentEventType()
+    public function testSetEventWithDifferentEventType(): void
     {
         $testParams = ['testParam' => 'testValue'];
 
@@ -312,7 +312,7 @@ class AdapterChainTest extends TestCase
      *
      * @depends testGetEventWithEventSet
      */
-    public function testLogoutAdapters()
+    public function testLogoutAdapters(): void
     {
         $event = new AdapterChainEvent();
         $event->setName('logout');

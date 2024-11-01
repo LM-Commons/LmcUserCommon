@@ -17,6 +17,7 @@ class ChainableAdapterConfigTest extends TestCase
         $this->assertArrayHasKey('name', $adapterConfig->toArray());
         $this->assertArrayHasKey('priority', $adapterConfig->toArray());
         $this->assertArrayHasKey('options', $adapterConfig->toArray());
+        /** @psalm-suppress EmptyArrayAccess */
         $this->assertIsArray($adapterConfig->toArray()['options']);
     }
 

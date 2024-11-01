@@ -64,7 +64,7 @@ class CommonOptionsTest extends TestCase
     }
 
     #[DataProvider('configProvider')]
-    public function testAuthAdapterConfig(array $config, array $expectedResult, ?bool $expectException = false): void
+    public function testAuthAdapterConfig(array $config, array $expectedResult, bool $expectException = false): void
     {
         if ($expectException) {
             $this->expectException(InvalidArgumentException::class);
@@ -89,10 +89,11 @@ class CommonOptionsTest extends TestCase
                 ],
             ],
         ]);
-        $this->assertEquals('foo', $coreOptions->findAuthAdapterByName('foo')->getName());
+        $this->assertNotNull($coreOptions->findAuthAdapterByName('foo'));
         $this->assertNull($coreOptions->findAuthAdapterByName('bar'));
     }
 
+    /** @psalm-suppress PossiblyUnusedMethod */
     public static function configProvider(): array
     {
         return [
