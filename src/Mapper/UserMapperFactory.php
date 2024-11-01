@@ -22,7 +22,6 @@ class UserMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): User
     {
-        /** @var CommonOptions $options */
         $options   = $container->get(CommonOptions::class);
         $dbAdapter = $container->get('lmcuser_laminas_db_adapter');
         if (! $dbAdapter instanceof Adapter) {

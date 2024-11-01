@@ -16,6 +16,7 @@ use function is_int;
 
 /**
  * @template TValue
+ * @extends AbstractOptions<TValue>
  */
 class CommonOptions extends AbstractOptions
 {
@@ -72,7 +73,11 @@ class CommonOptions extends AbstractOptions
         return $this->tableName;
     }
 
-    public function setAuthAdapters(array $authAdaptersConfig): CommonOptions
+    /**
+     * @param array<array-key, mixed> $authAdaptersConfig
+     * @return $this
+     */
+    public function setAuthAdapters(iterable $authAdaptersConfig): CommonOptions
     {
         if (array_is_list($authAdaptersConfig)) {
             throw new InvalidArgumentException('Authentication adapter configuration cannot be a list array');
@@ -80,7 +85,7 @@ class CommonOptions extends AbstractOptions
 
         /**
          * @var ?int $priority
-         * @var  string|array $authAdapterConfigOrName
+         * @var  string|array<string,mixed> $authAdapterConfigOrName
          */
         foreach ($authAdaptersConfig as $priority => $authAdapterConfigOrName) {
             if (! is_int($priority)) {

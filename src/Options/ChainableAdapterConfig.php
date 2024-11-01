@@ -6,6 +6,10 @@ namespace Lmc\User\Common\Options;
 
 use Laminas\Stdlib\AbstractOptions;
 
+/**
+ * @template TValue
+ * @extends AbstractOptions<TValue>
+ */
 class ChainableAdapterConfig extends AbstractOptions
 {
     public const DEFAULT_PRIORITY = 100;
@@ -23,6 +27,7 @@ class ChainableAdapterConfig extends AbstractOptions
 
     protected int $priority = self::DEFAULT_PRIORITY;
 
+    /** @var array<array-key,mixed>  */
     protected array $options = [];
 
     public function getName(): string
@@ -45,11 +50,17 @@ class ChainableAdapterConfig extends AbstractOptions
         $this->priority = $priority;
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function getOptions(): array
     {
         return $this->options;
     }
 
+    /**
+     * @param array<string, mixed> $options
+     */
     public function setOptions(array $options): void
     {
         $this->options = $options;

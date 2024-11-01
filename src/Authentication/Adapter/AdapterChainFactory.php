@@ -7,11 +7,9 @@ namespace Lmc\User\Common\Authentication\Adapter;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Lmc\User\Common\Options\ChainableAdapterConfig;
 use Lmc\User\Common\Options\CommonOptions;
 use Psr\Container\ContainerInterface;
 
-use function assert;
 use function sprintf;
 
 class AdapterChainFactory implements FactoryInterface
@@ -23,14 +21,11 @@ class AdapterChainFactory implements FactoryInterface
     {
         $adapterChain = new AdapterChain();
         if ($container->has('EventManager')) {
-            /** @psalm-suppress MixedArgument */
             $adapterChain->setEventManager($container->get('EventManager'));
         }
-        /** @var CommonOptions $coreOptions */
         $coreOptions = $container->get(CommonOptions::class);
 
         foreach ($coreOptions->getAuthAdapters() as $adapterConfig) {
-            assert($adapterConfig instanceof ChainableAdapterConfig);
             if ($container->has($adapterConfig->getName())) {
                 /** @var ListenerAggregateInterface $chainableAdapter */
                 $chainableAdapter = $container->get($adapterConfig->getName());
