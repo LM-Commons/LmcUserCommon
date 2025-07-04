@@ -35,8 +35,10 @@
     }
   },
   "extra": {
-    "component": "Lmc\\User\\Common",
-    "config-provider": "Lmc\\User\\Common\\ConfigProvider"
+    "laminas": {
+      "component": "Lmc\\User\\Common",
+      "config-provider": "Lmc\\User\\Common\\ConfigProvider"
+    }
   },
   "config": {
     "allow-plugins": {
