@@ -16,6 +16,8 @@ abstract class AbstractUser implements UserInterface
 
     protected string $password = '';
 
+    protected array $roles = [];
+
     protected int $state = UserInterface::STATE_INVALID;
 
     /**
@@ -117,6 +119,17 @@ abstract class AbstractUser implements UserInterface
     public function setState($state): UserInterface
     {
         $this->state = $state;
+        return $this;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): UserInterface
+    {
+        $this->roles = $roles;
         return $this;
     }
 }

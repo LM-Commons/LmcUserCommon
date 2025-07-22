@@ -5,5 +5,6 @@ CREATE TABLE `user`
     `email`         VARCHAR(255) DEFAULT NULL UNIQUE,
     `display_name`  VARCHAR(50) DEFAULT NULL,
     `password`      VARCHAR(128) NOT NULL,
-    `state`         SMALLINT UNSIGNED
+    `state`         SMALLINT UNSIGNED,
+    'roles'         VARCHAR(128) DEFAULT NULL
 ) ENGINE=InnoDB CHARSET="utf8";

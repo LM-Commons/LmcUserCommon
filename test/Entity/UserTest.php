@@ -55,4 +55,10 @@ class UserTest extends TestCase
         $this->user->setState(1);
         $this->assertEquals(1, $this->user->getState());
     }
+
+    public function testSetGetRoles(): void
+    {
+        $this->user->setRoles(['foo', 'bar']);
+        $this->assertEquals(['foo', 'bar'], $this->user->getRoles());
+    }
 }

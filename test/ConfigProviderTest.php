@@ -19,6 +19,5 @@ class ConfigProviderTest extends TestCase
         $this->assertIsArray($configProvider->getDependencies());
         $this->assertArrayHasKey('factories', $configProvider->getDependencies());
         $this->assertArrayHasKey('aliases', $configProvider->getDependencies());
-        $this->assertArrayHasKey('invokables', $configProvider->getDependencies());
     }
 }

@@ -24,6 +24,7 @@ class UserHydratorTest extends TestCase
             'password'     => 'xyz',
             'state'        => 1,
             'user_id'      => 0,
+            'roles'        => ['foo', 'bar'],
         ], $entity);
         $this->assertEquals('foo', $entity->getUsername());
         $this->assertEquals('foo@bar.com', $entity->getEmail());
@@ -31,6 +32,7 @@ class UserHydratorTest extends TestCase
         $this->assertEquals('xyz', $entity->getPassword());
         $this->assertEquals(1, $entity->getState());
         $this->assertEquals(0, $entity->getId());
+        $this->assertEquals(['foo', 'bar'], $entity->getRoles());
     }
 
     public function testExtract(): void
@@ -43,6 +45,7 @@ class UserHydratorTest extends TestCase
         $entity->setPassword('xyz');
         $entity->setState(1);
         $entity->setId(0);
+        $entity->setRoles(['foo', 'bar']);
         $data = $hydrator->extract($entity);
         $this->assertArrayNotHasKey('id', $data);
         $this->assertEquals([
@@ -52,6 +55,7 @@ class UserHydratorTest extends TestCase
             'password'     => 'xyz',
             'state'        => 1,
             'user_id'      => 0,
+            'roles'        => ['foo', 'bar'],
         ], $data);
     }
 

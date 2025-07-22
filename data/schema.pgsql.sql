@@ -6,6 +6,7 @@ CREATE TABLE public.user
 	display_name	character varying(50) DEFAULT NULL,
 	password	character varying(128) NOT NULL,
 	state		smallint,
+    roles       character varying(128) DEFAULT NULL,
 
 CONSTRAINT user_pkey 		PRIMARY KEY (user_id),
 CONSTRAINT user_username_key 	UNIQUE (username),
