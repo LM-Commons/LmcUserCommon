@@ -70,4 +70,8 @@ interface UserInterface
      * Set state.
      */
     public function setState(int $state): UserInterface;
+
+    public function getRoles(): array;
+
+    public function setRoles(array $roles): UserInterface;
 }

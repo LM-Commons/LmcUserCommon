@@ -14,12 +14,14 @@ use Lmc\User\Common\Db\Adapter\MasterSlaveAdapter;
 use Lmc\User\Common\Entity\User as Entity;
 use Lmc\User\Common\Entity\UserInterface;
 use Lmc\User\Common\Mapper\AbstractDbMapper;
+use Lmc\User\Common\Mapper\BaseUserHydratorFactory;
 use Lmc\User\Common\Mapper\User;
 use Lmc\User\Common\Mapper\UserHydrator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 use function array_merge;
@@ -66,6 +68,10 @@ final class UserMapperTest extends TestCase
         }
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws Exception
+     */
     public function setUp(): void
     {
         $this->container = new ServiceManager([]);
@@ -73,15 +79,21 @@ final class UserMapperTest extends TestCase
             'driver' => 'Pdo',
             'dsn'    => 'sqlite:memory',
         ]);
+        $factory         = new BaseUserHydratorFactory();
+        $baseHydrator    = $factory($this->createMock(ContainerInterface::class), 'foo');
         $this->mapper    = new User(
             $this->createMock(Adapter::class),
             'user',
-            new UserHydrator(new ClassMethodsHydrator()),
+            new UserHydrator($baseHydrator),
             new Entity()
         );
         parent::setUp();
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws Exception
+     */
     public function testConstruct(): void
     {
         $adapter  = $this->createMock(Adapter::class);
