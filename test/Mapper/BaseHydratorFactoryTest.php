@@ -18,6 +18,7 @@ final class BaseHydratorFactoryTest extends TestCase
     {
         $configProvider = new ConfigProvider();
         $container      = new ServiceManager($configProvider->getDependencies());
+        $container->setService('config', ['lmc_user' => $configProvider->getConfig()]);
         $this->assertInstanceOf(HydratorInterface::class, $container->get('lmcuser_default_hydrator'));
     }
 }
