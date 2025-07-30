@@ -129,7 +129,7 @@ abstract class AbstractUser implements UserInterface
 
     public function setRoles(iterable $roles): UserInterface
     {
-        $this->roles = $roles;
+        $this->roles = iterator_to_array($roles);
         return $this;
     }
 }
