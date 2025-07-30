@@ -24,6 +24,7 @@ class UserHydratorFactoryTest extends TestCase
     {
         $configProvider = new ConfigProvider();
         $container      = new ServiceManager($configProvider->getDependencies());
+        $container->setService('config', ['lmc_user' => $configProvider->getConfig()]);
         $this->assertInstanceOf(UserHydrator::class, $container->get(UserHydrator::class));
     }
 

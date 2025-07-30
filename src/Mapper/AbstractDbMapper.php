@@ -36,16 +36,20 @@ abstract class AbstractDbMapper implements EventManagerAwareInterface
 
     protected ?Sql $slaveSql = null;
 
+    protected ?string $idColumn = 'id';
+
     public function __construct(
         Adapter $dbAdapter,
         string $tableName,
         HydratorInterface $hydrator,
-        UserEntityInterface $entityPrototype
+        UserEntityInterface $entityPrototype,
+        string $idColumn = 'id',
     ) {
         $this->setDbAdapter($dbAdapter);
         $this->tableName       = $tableName;
         $this->hydrator        = $hydrator;
         $this->entityPrototype = $entityPrototype;
+        $this->idColumn        = $idColumn;
     }
 
     protected function getSelect(?string $tableName = null): Select
