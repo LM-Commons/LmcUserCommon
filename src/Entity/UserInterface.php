@@ -71,7 +71,7 @@ interface UserInterface
      */
     public function setState(int $state): UserInterface;
 
-    public function getRoles(): array;
+    public function getRoles(): iterable;
 
-    public function setRoles(array $roles): UserInterface;
+    public function setRoles(iterable $roles): UserInterface;
 }
