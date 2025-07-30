@@ -122,12 +122,12 @@ abstract class AbstractUser implements UserInterface
         return $this;
     }
 
-    public function getRoles(): array
+    public function getRoles(): iterable
     {
         return $this->roles;
     }
 
-    public function setRoles(array $roles): UserInterface
+    public function setRoles(iterable $roles): UserInterface
     {
         $this->roles = $roles;
         return $this;
