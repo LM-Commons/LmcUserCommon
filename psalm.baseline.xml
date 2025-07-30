@@ -86,14 +86,14 @@
       <code><![CDATA[public function getEmail(): string]]></code>
       <code><![CDATA[public function getId(): ?int]]></code>
       <code><![CDATA[public function getPassword(): string]]></code>
-      <code><![CDATA[public function getRoles(): array]]></code>
+      <code><![CDATA[public function getRoles(): iterable]]></code>
       <code><![CDATA[public function getState(): int]]></code>
       <code><![CDATA[public function getUsername(): string]]></code>
       <code><![CDATA[public function setDisplayName($displayName): UserInterface]]></code>
       <code><![CDATA[public function setEmail(string $email): UserInterface]]></code>
       <code><![CDATA[public function setId(int $id): UserInterface]]></code>
       <code><![CDATA[public function setPassword(string $password): UserInterface]]></code>
-      <code><![CDATA[public function setRoles(array $roles): UserInterface]]></code>
+      <code><![CDATA[public function setRoles(iterable $roles): UserInterface]]></code>
       <code><![CDATA[public function setState($state): UserInterface]]></code>
       <code><![CDATA[public function setUsername(string $username): UserInterface]]></code>
     </MissingOverrideAttribute>
@@ -439,7 +439,6 @@
     </PossiblyNullReference>
     <PossiblyUnusedProperty>
       <code><![CDATA[$adapter]]></code>
-      <code><![CDATA[$container]]></code>
     </PossiblyUnusedProperty>
     <UnnecessaryVarAnnotation>
       <code><![CDATA[string]]></code>

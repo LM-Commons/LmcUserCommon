@@ -34,7 +34,8 @@ class User extends AbstractDbMapper implements UserMapperInterface
 
     public function findById(int $id): ?EntityUserInterface
     {
-        $select = $this->getSelect()->where(['user_id' => $id]);
+        /** @psalm-suppress InvalidArrayOffset */
+        $select = $this->getSelect()->where([$this->idColumn => $id]);
         $entity = $this->innerSelect($select)->current();
         assert($entity instanceof EntityUserInterface || $entity === null);
         $this->getEventManager()->trigger('find', $this, ['entity' => $entity]);
@@ -52,7 +53,8 @@ class User extends AbstractDbMapper implements UserMapperInterface
 
     public function update(EntityUserInterface $entity): ResultInterface
     {
-        $where = ['user_id' => $entity->getId()];
+        /** @psalm-suppress InvalidArrayOffset */
+        $where = [$this->idColumn => $entity->getId()];
         return $this->innerUpdate($entity, $where);
     }
 
@@ -62,7 +64,8 @@ class User extends AbstractDbMapper implements UserMapperInterface
         ?string $tableName = null
     ): ResultInterface {
         if ($where === null) {
-            $where = ['user_id' => $entity->getId()];
+            /** @psalm-suppress InvalidArrayOffset */
+            $where = [$this->idColumn => $entity->getId()];
         }
         return $this->innerDelete($entity, $where, $tableName);
     }

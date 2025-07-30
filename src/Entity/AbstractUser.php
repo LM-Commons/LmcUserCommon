@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lmc\User\Common\Entity;
 
+use function iterator_to_array;
+
 abstract class AbstractUser implements UserInterface
 {
     protected ?int $id = null;
@@ -122,14 +124,14 @@ abstract class AbstractUser implements UserInterface
         return $this;
     }
 
-    public function getRoles(): array
+    public function getRoles(): iterable
     {
         return $this->roles;
     }
 
-    public function setRoles(array $roles): UserInterface
+    public function setRoles(iterable $roles): UserInterface
     {
-        $this->roles = $roles;
+        $this->roles = iterator_to_array($roles);
         return $this;
     }
 }

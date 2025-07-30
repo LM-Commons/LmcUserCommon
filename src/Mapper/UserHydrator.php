@@ -11,11 +11,10 @@ use function assert;
 
 class UserHydrator implements HydratorInterface
 {
-    private HydratorInterface $hydrator;
-
-    public function __construct(HydratorInterface $hydrator)
-    {
-        $this->hydrator = $hydrator;
+    public function __construct(
+        private HydratorInterface $hydrator,
+        private string $idColumn = 'id',
+    ) {
     }
 
     /**
@@ -26,13 +25,7 @@ class UserHydrator implements HydratorInterface
         assert($object instanceof UserEntityInterface);
 
         $data = $this->hydrator->extract($object);
-        if ($data['id'] !== null) {
-            $data = $this->mapField('id', 'user_id', $data);
-        } else {
-            unset($data['id']);
-        }
-
-        return $data;
+        return $this->mapField('id', $this->idColumn, $data);
     }
 
     /**
@@ -42,7 +35,7 @@ class UserHydrator implements HydratorInterface
     {
         assert($object instanceof UserEntityInterface);
 
-        $data = $this->mapField('user_id', 'id', $data);
+        $data = $this->mapField($this->idColumn, 'id', $data);
 
         return $this->hydrator->hydrate($data, $object);
     }
@@ -52,7 +45,9 @@ class UserHydrator implements HydratorInterface
     {
         if (isset($array[$keyFrom])) {
             $array[$keyTo] = $array[$keyFrom];
-            unset($array[$keyFrom]);
+            if ($keyTo !== $keyFrom) {
+                unset($array[$keyFrom]);
+            }
         }
 
         return $array;

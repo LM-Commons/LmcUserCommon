@@ -25,6 +25,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencies(),
+            'lmc_user'     => $this->getConfig(),
         ];
     }
 
@@ -50,5 +51,10 @@ class ConfigProvider
                 UserHydrator::class        => UserHydratorFactory::class,
             ],
         ];
+    }
+
+    public function getConfig(): array
+    {
+        return [];
     }
 }

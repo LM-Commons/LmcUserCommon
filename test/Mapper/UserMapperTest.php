@@ -17,6 +17,7 @@ use Lmc\User\Common\Mapper\AbstractDbMapper;
 use Lmc\User\Common\Mapper\BaseUserHydratorFactory;
 use Lmc\User\Common\Mapper\User;
 use Lmc\User\Common\Mapper\UserHydrator;
+use Lmc\User\Common\Options\CommonOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
@@ -75,13 +76,14 @@ final class UserMapperTest extends TestCase
     public function setUp(): void
     {
         $this->container = new ServiceManager([]);
-        $this->adapter   = new Adapter([
+        $this->container->setService(CommonOptions::class, new CommonOptions([]));
+        $this->adapter = new Adapter([
             'driver' => 'Pdo',
             'dsn'    => 'sqlite:memory',
         ]);
-        $factory         = new BaseUserHydratorFactory();
-        $baseHydrator    = $factory($this->createMock(ContainerInterface::class), 'foo');
-        $this->mapper    = new User(
+        $factory       = new BaseUserHydratorFactory();
+        $baseHydrator  = $factory($this->container, 'foo');
+        $this->mapper  = new User(
             $this->createMock(Adapter::class),
             'user',
             new UserHydrator($baseHydrator),
