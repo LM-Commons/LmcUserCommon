@@ -23,6 +23,8 @@ class CommonOptionsTest extends TestCase
         $this->assertEquals(User::class, $coreOptions->getUserEntityClass());
         $this->assertIsArray($coreOptions->getAuthAdapters());
         $this->assertEmpty($coreOptions->getAuthAdapters());
+        $this->assertEquals(',', $coreOptions->getRolesDelimiter());
+        $this->assertEquals('id', $coreOptions->getIdFieldName());
     }
 
     public function testCoreOptionsCustoms(): void
@@ -30,10 +32,14 @@ class CommonOptionsTest extends TestCase
         $coreOptions = new CommonOptions([
             'tableName'       => 'foo',
             'userEntityClass' => TestUserEntity::class,
+            'rolesDelimiter'  => ',',
+            'idFieldName'     => 'user_id',
         ]);
         $this->assertEquals('foo', $coreOptions->getTableName());
         $this->assertEquals(TestUserEntity::class, $coreOptions->getUserEntityClass());
         $this->assertIsArray($coreOptions->getAuthAdapters());
+        $this->assertEquals(',', $coreOptions->getRolesDelimiter());
+        $this->assertEquals('user_id', $coreOptions->getIdFieldName());
     }
 
     public function testCoreOptionsSetGet(): void
@@ -45,6 +51,8 @@ class CommonOptionsTest extends TestCase
             $coreOptions->setUserEntityClass(TestUserEntity::class)
                 ->getUserEntityClass()
         );
+        $this->assertEquals(',', $coreOptions->setRolesDelimiter(',')->getRolesDelimiter());
+        $this->assertEquals('user_id', $coreOptions->setIdFieldName('user_id')->getIdFieldName());
     }
 
     public function testNotExistUserEntityClass(): void

@@ -34,6 +34,10 @@ class CommonOptions extends AbstractOptions
 
     protected string $tableName = 'user';
 
+    protected string $idFieldName = 'id';
+
+    protected string $rolesDelimiter = ',';
+
     /** @var array<ChainableAdapterConfig> */
     protected array $authAdapters = [];
 
@@ -123,5 +127,32 @@ class CommonOptions extends AbstractOptions
             }
         }
         return null;
+    }
+
+    public function getIdFieldName(): string
+    {
+        return $this->idFieldName;
+    }
+
+    public function setIdFieldName(string $idFieldName): self
+    {
+        $this->idFieldName = $idFieldName;
+        return $this;
+    }
+
+    public function getRolesDelimiter(): string
+    {
+        return $this->rolesDelimiter;
+    }
+
+    /**
+     * @param non-empty-string $rolesDelimiter
+     */
+    public function setRolesDelimiter(string $rolesDelimiter): self
+    {
+        if (strlen($rolesDelimiter) > 0) {
+            $this->rolesDelimiter = $rolesDelimiter;
+        }
+        return $this;
     }
 }
