@@ -11,6 +11,8 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Lmc\User\Common\Options\CommonOptions;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 final class BaseUserHydratorFactory implements FactoryInterface
 {
     /**

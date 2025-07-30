@@ -13,6 +13,7 @@ use Webmozart\Assert\Assert;
 use function array_is_list;
 use function is_array;
 use function is_int;
+use function strlen;
 
 /**
  * @template TValue

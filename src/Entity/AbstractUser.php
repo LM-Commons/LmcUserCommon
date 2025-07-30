@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lmc\User\Common\Entity;
 
+use function iterator_to_array;
+
 abstract class AbstractUser implements UserInterface
 {
     protected ?int $id = null;
